@@ -56,12 +56,16 @@ class E implements AST {
         this.symbol = 'E';
         this.next = [];
     }
+    /**
+     * E -> (E)B|<Basic>B 
+     */
     parse(state: ParseState): AST {
         if (state.get() === '(') {
             this.next.push(new TerminalASTNode(state.accept()));
             this.next.push(new E().parse(state));
             if (state.get() === ')') {
                 this.next.push(new TerminalASTNode(state.accept()));
+                this.next.push(new B().parse(state));
             } else {
                 throw Error('expect ) in E');
             }
@@ -86,6 +90,9 @@ class A implements AST {
         this.symbol = 'A';
         this.next = [];
     }
+    /**
+     * A -> * | \|E | E
+     */
     parse(state: ParseState): AST {
         if (state.get() === '*') {
             this.next.push(new TerminalASTNode(state.accept()));
@@ -111,6 +118,9 @@ class B implements AST {
         this.symbol = 'B';
         this.next = [];
     }
+    /**
+     * B -> AB | <eps>
+     */
     parse(state: ParseState): AST {
         if (A.isFirst(state.get())) {
             this.next.push(new A().parse(state));
