@@ -49,7 +49,6 @@ class E implements AST {
         this.next = [];
     }
     parse(state: ParseState): AST {
-        console.log(this);
         if (state.get() === '(') {
             this.next.push(new TerminalASTNode(state.accept()));
             this.next.push(new E().parse(state));
@@ -80,7 +79,6 @@ class A implements AST {
         this.next = [];
     }
     parse(state: ParseState): AST {
-        console.log(this);
         if (state.get() === '*') {
             this.next.push(new TerminalASTNode(state.accept()));
         } else if (state.get() === '|') {
@@ -106,7 +104,6 @@ class B implements AST {
         this.next = [];
     }
     parse(state: ParseState): AST {
-        console.log(this);
         if (A.isFirst(state.get())) {
             this.next.push(new A().parse(state));
             this.next.push(new B().parse(state));
