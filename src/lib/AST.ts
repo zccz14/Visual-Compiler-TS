@@ -1,4 +1,4 @@
 interface AST {
-    symbol: VSymbol;
-    next?: AST[];
+    name: VSymbol;
+    children?: AST[];
 };

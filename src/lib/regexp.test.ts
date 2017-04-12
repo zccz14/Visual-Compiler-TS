@@ -1,6 +1,6 @@
 import { parseRegExp } from './regexp';
-import * as test0 from '../test/0.json';
-import * as test1 from '../test/1.json';
+var test0 = require('../test/0.json');
+var test1 = require('../test/1.json');
 
 it('turn regexp "1(0|1)*101" to AST', () => {
     let st = parseRegExp('1(0|1)*101');

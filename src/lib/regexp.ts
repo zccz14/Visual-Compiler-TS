@@ -27,9 +27,9 @@ export function parseRegExp(exp: string): AST {
 }
 
 class TerminalASTNode implements AST {
-    symbol: TerminalSymbol;
+    name: TerminalSymbol;
     constructor(symbol: string) {
-        this.symbol = symbol;
+        this.name = symbol;
     }
 }
 
@@ -47,31 +47,31 @@ function isBasic(char: string): boolean {
 }
 
 class E implements AST {
-    symbol: VSymbol;
-    next: AST[];
+    name: VSymbol;
+    children: AST[];
     static isFirst(char: string): boolean {
         return char === '(' || isBasic(char);
     }
     constructor() {
-        this.symbol = 'E';
-        this.next = [];
+        this.name = 'E';
+        this.children = [];
     }
     /**
      * E -> (E)B|<Basic>B 
      */
     parse(state: ParseState): AST {
         if (state.get() === '(') {
-            this.next.push(new TerminalASTNode(state.accept()));
-            this.next.push(new E().parse(state));
+            this.children.push(new TerminalASTNode(state.accept()));
+            this.children.push(new E().parse(state));
             if (state.get() === ')') {
-                this.next.push(new TerminalASTNode(state.accept()));
-                this.next.push(new B().parse(state));
+                this.children.push(new TerminalASTNode(state.accept()));
+                this.children.push(new B().parse(state));
             } else {
                 throw Error('expect ) in E');
             }
         } else if (isBasic(state.get())) {
-            this.next.push(new TerminalASTNode(state.accept()));
-            this.next.push(new B().parse(state));
+            this.children.push(new TerminalASTNode(state.accept()));
+            this.children.push(new B().parse(state));
         } else {
             throw Error('expect basic char');
         }
@@ -81,26 +81,26 @@ class E implements AST {
 }
 
 class A implements AST {
-    symbol: VSymbol;
-    next: AST[];
+    name: VSymbol;
+    children: AST[];
     static isFirst(char: string): boolean {
         return char === '*' || char === '|' || E.isFirst(char);
     }
     constructor() {
-        this.symbol = 'A';
-        this.next = [];
+        this.name = 'A';
+        this.children = [];
     }
     /**
      * A -> * | \|E | E
      */
     parse(state: ParseState): AST {
         if (state.get() === '*') {
-            this.next.push(new TerminalASTNode(state.accept()));
+            this.children.push(new TerminalASTNode(state.accept()));
         } else if (state.get() === '|') {
-            this.next.push(new TerminalASTNode(state.accept()));
-            this.next.push(new E().parse(state));
+            this.children.push(new TerminalASTNode(state.accept()));
+            this.children.push(new E().parse(state));
         } else if (E.isFirst(state.get())) {
-            this.next.push(new E().parse(state));
+            this.children.push(new E().parse(state));
         } else {
             throw Error('A error');
         }
@@ -109,22 +109,22 @@ class A implements AST {
 }
 
 class B implements AST {
-    symbol: VSymbol;
-    next: AST[];
+    name: VSymbol;
+    children: AST[];
     static isFirst(char: string): boolean {
         return !char || A.isFirst(char);
     }
     constructor() {
-        this.symbol = 'B';
-        this.next = [];
+        this.name = 'B';
+        this.children = [];
     }
     /**
      * B -> AB | <eps>
      */
     parse(state: ParseState): AST {
         if (A.isFirst(state.get())) {
-            this.next.push(new A().parse(state));
-            this.next.push(new B().parse(state));
+            this.children.push(new A().parse(state));
+            this.children.push(new B().parse(state));
         }
         return this;
     }

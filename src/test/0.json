@@ -1,119 +1,119 @@
 {
-  "symbol": "E",
-  "next": [
+  "name": "E",
+  "children": [
     {
-      "symbol": "1"
+      "name": "1"
     },
     {
-      "symbol": "B",
-      "next": [
+      "name": "B",
+      "children": [
         {
-          "symbol": "A",
-          "next": [
+          "name": "A",
+          "children": [
             {
-              "symbol": "E",
-              "next": [
+              "name": "E",
+              "children": [
                 {
-                  "symbol": "("
+                  "name": "("
                 },
                 {
-                  "symbol": "E",
-                  "next": [
+                  "name": "E",
+                  "children": [
                     {
-                      "symbol": "0"
+                      "name": "0"
                     },
                     {
-                      "symbol": "B",
-                      "next": [
+                      "name": "B",
+                      "children": [
                         {
-                          "symbol": "A",
-                          "next": [
+                          "name": "A",
+                          "children": [
                             {
-                              "symbol": "|"
+                              "name": "|"
                             },
                             {
-                              "symbol": "E",
-                              "next": [
+                              "name": "E",
+                              "children": [
                                 {
-                                  "symbol": "1"
+                                  "name": "1"
                                 },
                                 {
-                                  "symbol": "B",
-                                  "next": []
+                                  "name": "B",
+                                  "children": []
                                 }
                               ]
                             }
                           ]
                         },
                         {
-                          "symbol": "B",
-                          "next": []
+                          "name": "B",
+                          "children": []
                         }
                       ]
                     }
                   ]
                 },
                 {
-                  "symbol": ")"
+                  "name": ")"
                 },
                 {
-                  "symbol": "B",
-                  "next": [
+                  "name": "B",
+                  "children": [
                     {
-                      "symbol": "A",
-                      "next": [
+                      "name": "A",
+                      "children": [
                         {
-                          "symbol": "*"
+                          "name": "*"
                         }
                       ]
                     },
                     {
-                      "symbol": "B",
-                      "next": [
+                      "name": "B",
+                      "children": [
                         {
-                          "symbol": "A",
-                          "next": [
+                          "name": "A",
+                          "children": [
                             {
-                              "symbol": "E",
-                              "next": [
+                              "name": "E",
+                              "children": [
                                 {
-                                  "symbol": "1"
+                                  "name": "1"
                                 },
                                 {
-                                  "symbol": "B",
-                                  "next": [
+                                  "name": "B",
+                                  "children": [
                                     {
-                                      "symbol": "A",
-                                      "next": [
+                                      "name": "A",
+                                      "children": [
                                         {
-                                          "symbol": "E",
-                                          "next": [
+                                          "name": "E",
+                                          "children": [
                                             {
-                                              "symbol": "0"
+                                              "name": "0"
                                             },
                                             {
-                                              "symbol": "B",
-                                              "next": [
+                                              "name": "B",
+                                              "children": [
                                                 {
-                                                  "symbol": "A",
-                                                  "next": [
+                                                  "name": "A",
+                                                  "children": [
                                                     {
-                                                      "symbol": "E",
-                                                      "next": [
+                                                      "name": "E",
+                                                      "children": [
                                                         {
-                                                          "symbol": "1"
+                                                          "name": "1"
                                                         },
                                                         {
-                                                          "symbol": "B",
-                                                          "next": []
+                                                          "name": "B",
+                                                          "children": []
                                                         }
                                                       ]
                                                     }
                                                   ]
                                                 },
                                                 {
-                                                  "symbol": "B",
-                                                  "next": []
+                                                  "name": "B",
+                                                  "children": []
                                                 }
                                               ]
                                             }
@@ -122,8 +122,8 @@
                                       ]
                                     },
                                     {
-                                      "symbol": "B",
-                                      "next": []
+                                      "name": "B",
+                                      "children": []
                                     }
                                   ]
                                 }
@@ -132,8 +132,8 @@
                           ]
                         },
                         {
-                          "symbol": "B",
-                          "next": []
+                          "name": "B",
+                          "children": []
                         }
                       ]
                     }
@@ -144,8 +144,8 @@
           ]
         },
         {
-          "symbol": "B",
-          "next": []
+          "name": "B",
+          "children": []
         }
       ]
     }
