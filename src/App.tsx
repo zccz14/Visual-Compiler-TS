@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-
+import ShowBox from './ShowBox';
 const logo = require('./logo.svg');
 
 class App extends React.Component<null, null> {
@@ -14,6 +14,7 @@ class App extends React.Component<null, null> {
         <p className="App-intro">
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <ShowBox/>
       </div>
     );
   }

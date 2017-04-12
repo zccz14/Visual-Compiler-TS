@@ -1,9 +1,9 @@
 class ParseState {
     idx: number;
     exp: string;
-    constructor(exp: string, idx: number) {
+    constructor(exp: string) {
         this.exp = exp;
-        this.idx = idx;
+        this.idx = 0;
     }
     get(): string {
         return this.exp.charAt(this.idx);
@@ -12,10 +12,18 @@ class ParseState {
         this.idx++;
         return this.exp.charAt(this.idx - 1);
     }
+    get done(): boolean {
+        return this.idx === this.exp.length;
+    }
 };
 
 export function parseRegExp(exp: string): AST {
-    return new E().parse(new ParseState(exp, 0));
+    let state = new ParseState(exp);
+    let ST = new E().parse(state);
+    if (!state.done) {
+        throw new Error('expect end');
+    }
+    return ST;
 }
 
 class TerminalASTNode implements AST {
