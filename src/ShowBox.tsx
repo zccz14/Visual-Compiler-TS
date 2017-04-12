@@ -22,7 +22,7 @@ class ShowBox extends React.Component<null, ShowBoxState> {
                             let st = parseRegExp(exp);
                             this.setState({ AST: st, msg: '' });
                         } catch (e) {
-                            this.setState({ msg: e });
+                            this.setState({ msg: e.toString() });
                         }
                     }
                 } />
@@ -30,16 +30,10 @@ class ShowBox extends React.Component<null, ShowBoxState> {
                 <pre>
                     <code>
                         {
-                            JSON.stringify(this.state.AST, null, 2)
+                            this.state.msg? this.state.msg: JSON.stringify(this.state.AST, null, 2)
                         }
                     </code>
                 </pre>
-                <br />
-                <p>
-                    {
-                        this.state.msg.toString()
-                    }
-                </p>
             </div>
         );
     }
